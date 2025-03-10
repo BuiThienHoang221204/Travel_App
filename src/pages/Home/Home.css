@@ -1,5 +1,6 @@
 /* Css cho phần nội dụng Content-container */
 .content-container {
+    margin: 40px auto;
     h3{
         font-size: 28px;
         font-weight: bold;
@@ -29,7 +30,7 @@
 }
 /* css cho phần contact-img */
 .contact-container{
-    margin: 10px auto;
+    margin: 40px auto;
     position: relative;
 
     h3{
