@@ -1,0 +1,32 @@
+/* Custom checkbox styles */
+input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Glass effect */
+.bg-white\/80 {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Smooth transitions */
+.transition-all {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+}
+
+/* Input focus effect */
+.focus\:ring-2:focus {
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.2);
+}
+
+/* Responsive styles */
+@media (max-width: 1024px) {
+  .lg\:w-1\/2 {
+    width: 100%;
+  }
+} 
