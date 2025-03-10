@@ -27,3 +27,63 @@
         color: #666;
     }
 }
+/* css cho phần contact-img */
+.contact-container{
+    margin: 10px auto;
+    position: relative;
+
+    h3{
+        font-size: 28px;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 20px;
+        text-align: left;
+    }
+}
+.contact-img{
+    margin: 20px auto;
+    
+    .img1{
+        height: 400px;
+        width: 100%;
+        object-fit: cover;
+        overflow: hidden;
+        opacity: 0.9;
+    }
+    .img2{
+        position: absolute;
+        top: 20%;
+        right: 5%;
+        height: 362px;
+        width: 204px;
+    }
+}
+
+.title-img{
+    position: absolute;
+    top: 30%;
+    left: 20%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+}
+.text-img{
+    position: absolute;
+    top: 38%;
+    left: 6%;
+    color: whitesmoke;
+    font-size: 18px;
+    text-align: center;
+    font-weight: 600;
+    width: 40%;
+    text-align: left;
+}
+
+.group-input{
+    color: white;
+    position: absolute;
+    top: 65%;
+    left: 6%;
+}

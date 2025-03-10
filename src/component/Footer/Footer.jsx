@@ -1,10 +1,11 @@
 import React from 'react'
-import './Footer.css'; 
-import img1 from '../../assets/img1.jpg';
-import img2 from '../../assets/img2.jpg';
-import img3 from '../../assets/img3.jpg';
-import img4 from '../../assets/img4.jpg';
-import img5 from '../../assets/img5.jpg';
+import './Footer.css';
+import card1 from '../../assets/card-group1.jpg';
+import card2 from '../../assets/card-group2.jpg';
+import card3 from '../../assets/card-group3.jpg';
+import card4 from '../../assets/card-group4.jpg';
+import card5 from '../../assets/card-group5.jpg';
+import card6 from '../../assets/card-group6.jpg';
 import logoFooter from '../../assets/boconthuong.png';
 
 function Footer() {
@@ -49,12 +50,12 @@ function Footer() {
         <div className="footer-section">
           <h4>Instagram</h4>
           <div className="instagram-grid">
-            <img src={img1} alt="Instagram 1" />
-            <img src={img2} alt="Instagram 2" />
-            <img src={img3} alt="Instagram 3" />
-            <img src={img4} alt="Instagram 4" />
-            <img src={img5} alt="Instagram 3" />
-            <img src={img1} alt="Instagram 1" />
+            <img src={card1} alt="Instagram 1" />
+            <img src={card2} alt="Instagram 2" />
+            <img src={card3} alt="Instagram 3" />
+            <img src={card4} alt="Instagram 4" />
+            <img src={card5} alt="Instagram 3" />
+            <img src={card6} alt="Instagram 1" />
           </div>
         </div>
       </div>

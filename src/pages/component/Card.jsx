@@ -111,6 +111,7 @@ function BasicExample() {
             <button className="nextCard" onClick={nextCard}>
                 ❯
             </button>
+            <button className='btn btn-outline-primary d-block mx-auto my-4 w-72'>Xem thêm</button>
         </div>
     );
 }

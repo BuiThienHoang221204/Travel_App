@@ -35,18 +35,23 @@
 .prev {
     position: absolute;
     top: 40%;
+    left: 10px;
     background-color: transparent;
     border: transparent;
-    font-size: 50px;
+    font-size: 40px;
+    color: white;
+    opacity: 0.5;
 }
 
 .next {
-    right: 0;
+    right: 10px;
     position: absolute;
     top: 40%;
     background-color: transparent;
     border: transparent;
-    font-size: 50px;
+    font-size: 40px;
+    color: white;
+    opacity: 0.5;
 }
 
 .caption {
