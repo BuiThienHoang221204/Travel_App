@@ -1,8 +1,10 @@
 import Home from "../pages/Home/Home"; 
-import About from "../pages/About";
+import About from "../pages/About/About";
 import Contact from "../pages/Contact";
-import Login from "../pages/Login";
+import Login from "../pages/Login/Login";
+import Register from "../pages/Register/Register";
 import configs from "../config";
+import EmptyLayout from "../Layout/EmtyLayout/index";
 
 const routes = [
     {
@@ -21,7 +23,12 @@ const routes = [
     {
         path: configs.login,
         component : Login,
-        // layout : null, // Sử dụng DeafaultLayout nếu không có layout
+        layout :  EmptyLayout// Sử dụng DeafaultLayout nếu không có layout
+    },
+    {
+        path: configs.register,
+        component : Register,
+        layout :  EmptyLayout// Sử dụng DeafaultLayout nếu không có layout
     },
     // {
     //     path: '*',
