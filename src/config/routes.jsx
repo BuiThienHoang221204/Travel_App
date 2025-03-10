@@ -4,5 +4,6 @@ const routes = {
     contact : '/contact',
     login : '/login',
     register : '/register',
+    emptylayout: '*'
 }
 export default routes
