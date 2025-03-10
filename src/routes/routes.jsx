@@ -35,11 +35,14 @@ const routes = [
     {
         path: configs.emptylayout,
         component: () => (
-            <div className="h-60 text-center align-content-center relative" style={{fontFamily:'sans-serif'}}>
+            <div className="h-60 text-center align-content-center relative bg-image hover-overlay" style={{ fontFamily: 'sans-serif' }}>
                 <h1 className="text-4xl font-bold" >404 Không tìm thấy trang</h1>
                 <p className="opacity-65 mb-10 mt-3">Xin lỗi chúng tôi không thể tìm thấy trang này</p>
-                <Link className="text-2xl py-3 text-decoration-none text-black" to={configs.home}>Quay về trang chủ </Link>
-                <IoIosReturnLeft className="absolute" style={{top:'66%', fontSize:'40px', right:'37%'}}/>
+                <Link className="text-2xl py-3 text-decoration-none" to={configs.home}
+                    style={{
+                        color: 'linear-gradient( 45deg, hsla(168, 85%, 52%, 0.5),hsla(263, 88%, 45%, 0.5) 100%)'
+                    }}>Quay về trang chủ </Link>
+                <IoIosReturnLeft className="absolute" style={{ top: '66%', fontSize: '40px', right: '37%' }} />
             </div>
         )
     }
