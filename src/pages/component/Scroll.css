@@ -1,6 +1,7 @@
 /* Section Ưu đãi cho bạn */
 .discount {
     margin: 40px auto;
+    position: relative;
 }
 
 .discount-title {
@@ -12,7 +13,6 @@
 }
 
 .discount-container {
-    position: relative;
     overflow: hidden;
     height: 200px;
 }
@@ -42,27 +42,28 @@
 .prevPro,
 .nextPro {
     position: absolute;
-    top: 108%;
+    top: 60%;
     transform: translateY(-50%);
     background-color: rgba(0, 0, 0, 0.5);
     color: white;
     border: none;
-    padding: 10px;
+    padding: 2px 10px;
     cursor: pointer;
     font-size: 20px;
-    z-index: 10;
+    /* z-index: 10; */
     border-radius: 50%;
+    opacity: 0.5;
 }
 
 .prevPro {
-    left: 9.5%;
+    left: -2.5%;
 }
 
 .nextPro {
-    right: 9.5%;
+    right: -2.5%;
 }
 
 .prevPro:hover,
 .nextPro:hover {
-    background-color: rgba(0, 0, 0, 0.8);
+    opacity: 1;
 }
