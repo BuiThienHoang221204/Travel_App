@@ -47,7 +47,7 @@
 
 .nav-link {
     margin: 0 10px;
-    padding: 10px 40px;
+    padding: 10px 20px;
     border-radius: 20px;
 }
 
@@ -103,19 +103,20 @@
     position: absolute;
     min-width:200px;
     text-align: center;
-    right: -30px;
-    top: 110%;
+    right: -45px;
+    top: 112%;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
 }
 
 .nav-item:hover .dropdown-menu {
+    transition: all 1s ease-in-out;
     display: block;
 }
 .dropdown-menu::after {
     content: '';
     position: absolute;
-    top: -5px;
+    top: -8px;
     left: 90px;
     border-left: 10px solid transparent;
     border-right: 10px solid transparent;
