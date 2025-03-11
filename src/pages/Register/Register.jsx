@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FaUser, FaLock, FaEnvelope, FaPhone } from 'react-icons/fa';
+import { FaUser, FaLock, FaEnvelope, FaPhone, FaHome } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import './Register.css';
 
@@ -7,7 +7,6 @@ const Register = () => {
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
-    phone: '',
     password: '',
     confirmPassword: ''
   });
@@ -22,7 +21,6 @@ const Register = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Xử lý đăng ký ở đây
   };
 
   return (
@@ -44,6 +42,15 @@ const Register = () => {
       {/* Phần bên phải - Form đăng ký */}
       <div className="w-full lg:w-[55%] flex items-center justify-center p-4 lg:p-8">
         <div className="w-full max-w-xl bg-white rounded-2xl shadow-md p-6 lg:p-10">
+          <div className="flex justify-end mb-4">
+            <Link
+              to="/"
+              className="flex items-center text-blue-500 hover:text-blue-600 transition-colors duration-300"
+            >
+              <FaHome className="text-xl mr-1" />
+              <span>Trang chủ</span>
+            </Link>
+          </div>
           <div className="text-center mb-8">
             <h2 className="text-3xl lg:text-4xl font-bold text-gray-800 mb-2">
               Đăng ký tài khoản
@@ -71,18 +78,6 @@ const Register = () => {
                 name="email"
                 placeholder="Email"
                 value={formData.email}
-                onChange={handleChange}
-                className="input-field"
-              />
-            </div>
-
-            <div className="relative">
-              <FaPhone className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 text-xl" />
-              <input
-                type="tel"
-                name="phone"
-                placeholder="Số điện thoại"
-                value={formData.phone}
                 onChange={handleChange}
                 className="input-field"
               />
