@@ -1,13 +1,37 @@
 import React, { useState } from 'react';
 import { FaLock, FaEnvelope, FaFacebookF, FaGoogle, FaTwitter, FaHome } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [rememberMe, setRememberMe] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    
+    // Kiểm tra các trường dữ liệu
+    if (!email || !password) {
+      toast.error('Vui lòng điền đầy đủ thông tin!');
+      return;
+    }
+
+    // Kiểm tra định dạng email
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      toast.error('Email không hợp lệ!');
+      return;
+    }
+
+    // Giả lập đăng nhập thành công
+    toast.success('Đăng nhập thành công!', {
+      onClose: () => {
+        navigate('/');
+      }
+    });
   };
 
   return (
@@ -68,7 +92,12 @@ const Login = () => {
 
             <div className="flex items-center justify-between">
               <label className="flex items-center cursor-pointer">
-                <input type="checkbox" className="w-5 h-5 rounded border-gray-300 text-blue-500 focus:ring-blue-500" />
+                <input 
+                  type="checkbox" 
+                  checked={rememberMe}
+                  onChange={(e) => setRememberMe(e.target.checked)}
+                  className="w-5 h-5 rounded border-gray-300 text-blue-500 focus:ring-blue-500" 
+                />
                 <span className="ml-2 text-gray-600">Ghi nhớ đăng nhập</span>
               </label>
               <a href="#" className="text-blue-500 hover:text-blue-600 font-medium">
@@ -120,6 +149,18 @@ const Login = () => {
           </p>
         </div>
       </div>
+      <ToastContainer
+        position="top-right"
+        autoClose={1000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
     </div>
   );
 };

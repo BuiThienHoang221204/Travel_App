@@ -1,15 +1,20 @@
 import React, { useState } from 'react';
 import { FaUser, FaLock, FaEnvelope, FaPhone, FaHome } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import './Register.css';
 
 const Register = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
     password: '',
     confirmPassword: ''
   });
+
+  const [isChecked, setIsChecked] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -21,11 +26,31 @@ const Register = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    
+    if (!formData.fullName || !formData.email || !formData.password || !formData.confirmPassword) {
+      toast.error('Vui lòng điền đầy đủ thông tin!');
+      return;
+    }
+
+    if (formData.password !== formData.confirmPassword) {
+      toast.error('Mật khẩu xác nhận không khớp!');
+      return;
+    }
+
+    if (!isChecked) {
+      toast.error('Vui lòng đồng ý với điều khoản và chính sách!');
+      return;
+    }
+
+    toast.success('Đăng ký thành công!', {
+      onClose: () => {
+        navigate('/');
+      }
+    });
   };
 
   return (
     <div className="flex min-h-screen bg-gray-50">
-      {/* Phần bên trái - Hình ảnh và slogan */}
       <div className="hidden lg:flex lg:w-[45%] relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-blue-600">
         </div>
@@ -39,7 +64,6 @@ const Register = () => {
         </div>
       </div>
 
-      {/* Phần bên phải - Form đăng ký */}
       <div className="w-full lg:w-[55%] flex items-center justify-center p-4 lg:p-8">
         <div className="w-full max-w-xl bg-white rounded-2xl shadow-md p-6 lg:p-10">
           <div className="flex justify-end mb-4">
@@ -111,6 +135,8 @@ const Register = () => {
               <input
                 type="checkbox"
                 id="terms"
+                checked={isChecked}
+                onChange={(e) => setIsChecked(e.target.checked)}
                 className="mt-1 w-5 h-5 rounded border-gray-300 text-blue-500 focus:ring-blue-500"
               />
               <label htmlFor="terms" className="ml-3 text-gray-600 text-sm lg:text-base">
@@ -137,6 +163,18 @@ const Register = () => {
           </p>
         </div>
       </div>
+      <ToastContainer
+        position="top-right"
+        autoClose={1000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
     </div>
   );
 };
