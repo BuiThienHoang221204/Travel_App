@@ -1,8 +1,8 @@
 
-import React, {useRef} from 'react'
+import React, {useRef,useState} from 'react'
 
 import { useInView } from 'framer-motion';
-import React, { useState } from 'react';
+
 
 import { FaShoppingCart } from "react-icons/fa";
 import contactImg from '../../assets/contact-img.jpg';

@@ -1,5 +1,5 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import { motion } from "framer-motion";
+import { motion as Motion } from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
 import { Button, Card, Col, Form, Modal, Row } from "react-bootstrap";
 import { FaComments, FaEnvelope, FaHeart, FaMapMarkerAlt, FaPhone, FaStar } from "react-icons/fa";
@@ -78,30 +78,30 @@ function Contact() {
   };
 
   return (
-    <motion.div 
+    <Motion.div 
       className="contact-page-container"
       initial="hidden"
       animate="visible"
       variants={containerVariants}
     >
       <div className="contact-header">
-        <motion.h1 
+        <Motion.h1 
           className="contact-title"
           variants={itemVariants}
         >
           Chúng tôi <span className="highlight">rất vui</span> khi nghe từ bạn.
-        </motion.h1>
-        <motion.p 
+        </Motion.h1>
+        <Motion.p 
           className="contact-subtitle"
           variants={itemVariants}
         >
           Hãy để lại thông tin của bạn, chúng tôi sẽ liên hệ sớm nhất có thể.
-        </motion.p>
+        </Motion.p>
       </div>
 
       <Row className="contact-content">
         <Col md={5}>
-          <motion.div variants={itemVariants}>
+          <Motion.div variants={itemVariants}>
             <Card className="contact-info-card">
               <Card.Body>
                 <h3 className="mb-4">Thông tin liên hệ</h3>
@@ -156,11 +156,11 @@ function Contact() {
                 </div>
               </Card.Body>
             </Card>
-          </motion.div>
+          </Motion.div>
         </Col>
 
         <Col md={7}>
-          <motion.div variants={itemVariants}>
+          <Motion.div variants={itemVariants}>
             <Card className="contact-form-card">
               <Card.Body>
                 <h3 className="mb-4">Gửi tin nhắn cho chúng tôi</h3>
@@ -234,7 +234,7 @@ function Contact() {
                 </Form>
               </Card.Body>
             </Card>
-          </motion.div>
+          </Motion.div>
         </Col>
       </Row>
 
@@ -258,7 +258,7 @@ function Contact() {
           </Button>
         </Modal.Body>
       </Modal>
-    </motion.div>
+    </Motion.div>
   );
 }
 
