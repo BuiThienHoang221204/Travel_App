@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FaLock, FaEnvelope, FaFacebookF, FaGoogle, FaTwitter } from 'react-icons/fa';
+import { FaLock, FaEnvelope, FaFacebookF, FaGoogle, FaTwitter, FaHome } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
 const Login = () => {
@@ -27,6 +27,15 @@ const Login = () => {
 
       <div className="w-full lg:w-1/2 flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-blue-50 p-8">
         <div className="w-full max-w-md">
+          <div className="flex justify-end mb-4">
+            <Link
+              to="/"
+              className="flex items-center text-blue-500 hover:text-blue-600 transition-colors duration-300"
+            >
+              <FaHome className="text-xl mr-1" />
+              <span>Trang chủ</span>
+            </Link>
+          </div>
           <div className="text-center mb-10">
             <h2 className="text-4xl font-bold text-gray-800 mb-3">
               Đăng nhập
