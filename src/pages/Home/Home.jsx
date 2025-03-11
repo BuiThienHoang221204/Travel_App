@@ -1,4 +1,5 @@
-// import React, { useState, useEffect } from 'react'
+import React from 'react'
+import { useInView } from 'framer-motion';
 
 import content1 from '../../assets/content-img1.jpg';
 import content2 from '../../assets/content-img2.jpg';
@@ -8,6 +9,27 @@ import contactImg from '../../assets/contact-img.jpg';
 import imgIphone from '../../assets/img-iphone.jpg';
 import './Home.css'
 import Card, { CardGroup, Scroll } from '../component';
+
+// Component con để áp dụng hiệu ứng xuất hiện khi scroll
+const AnimateOnScroll = ({ children, delay = 0 }) => {
+  const ref = React.useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.3 });
+  
+  return (
+    <div
+      ref={ref}
+      className={`animate-on-scroll ${isInView ? 'animate-visible' : ''}`}
+      style={{
+        opacity: isInView ? 1 : 0,
+        transform: isInView ? 'translateY(0)' : 'translateY(50px)',
+        transition: `opacity 0.5s ease-in-out ${delay}s, transform 0.5s ease-in-out ${delay}s`
+      }}
+    >
+      {children}
+    </div>
+  );
+};
+
 function Home() {
   //Content 
   const contents = [
@@ -19,39 +41,51 @@ function Home() {
   return (
     <div>
       <Scroll />
-      <div className='content-container'>
-        <h3>Vì sao bạn nên chọn Travel</h3>
-        <div className='content-section'>
-          {contents.map(content => (
-            <div key={content.id} className='content-item'>
-              <img src={content.img} alt={content.title} />
-              <h4>{content.title}</h4>
-              <p>{content.text}</p>
-            </div>
-          ))}
+      
+      <AnimateOnScroll>
+        <div className='content-container'>
+          <h3>Vì sao bạn nên chọn Travel</h3>
+          <div className='content-section'>
+            {contents.map((content, index) => (
+              <AnimateOnScroll key={content.id} delay={index * 0.1}>
+                <div className='content-item'>
+                  <img src={content.img} alt={content.title} />
+                  <h4>{content.title}</h4>
+                  <p>{content.text}</p>
+                </div>
+              </AnimateOnScroll>
+            ))}
+          </div>
         </div>
-      </div>
-      <Card />
-      <CardGroup />
-      <div className='contact-container'>
-        <h3>Khám phá thêm</h3>
-        <div className='contact-img'>
-          <img src={contactImg} alt="" className='img1' />
-          <img src={imgIphone} alt="" className='img2' />
-          <h4 className='title-img'>Ứng dụng du lịch từ A-Z</h4>
-          <p className='text-img'>Ưu đãi hot khi đặt tour, vé tham quan, khách sạn, vé di chuyển khắp thế giới qua app Klook!</p>
-          <div className='group-input'>
-            <p className='fw-bold'>Nhận & gửi magic link đến email của bạn</p>
-            <div className='d-flex'>
-              <input type="email" placeholder='Email' className='form-control' />
-              <button className='btn btn-light mx-2'>Gửi</button>
+      </AnimateOnScroll>
+      
+      <AnimateOnScroll delay={0.2}>
+        <Card />
+      </AnimateOnScroll>
+      
+      <AnimateOnScroll delay={0.3}>
+        <CardGroup />
+      </AnimateOnScroll>
+      
+      <AnimateOnScroll delay={0.4}>
+        <div className='contact-container'>
+          <h3>Khám phá thêm</h3>
+          <div className='contact-img'>
+            <img src={contactImg} alt="" className='img1' />
+            <img src={imgIphone} alt="" className='img2' />
+            <h4 className='title-img'>Ứng dụng du lịch từ A-Z</h4>
+            <p className='text-img'>Ưu đãi hot khi đặt tour, vé tham quan, khách sạn, vé di chuyển khắp thế giới qua app Klook!</p>
+            <div className='group-input'>
+              <p className='fw-bold'>Nhận & gửi magic link đến email của bạn</p>
+              <div className='d-flex'>
+                <input type="email" placeholder='Email' className='form-control' />
+                <button className='btn btn-light mx-2'>Gửi</button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </AnimateOnScroll>
     </div>
-
-
   )
 }
 export default Home
