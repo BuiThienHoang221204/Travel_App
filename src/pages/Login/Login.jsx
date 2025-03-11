@@ -13,20 +13,17 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     
-    // Kiểm tra các trường dữ liệu
     if (!email || !password) {
       toast.error('Vui lòng điền đầy đủ thông tin!');
       return;
     }
 
-    // Kiểm tra định dạng email
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
       toast.error('Email không hợp lệ!');
       return;
     }
-
-    // Giả lập đăng nhập thành công
+    
     toast.success('Đăng nhập thành công!', {
       onClose: () => {
         navigate('/');
