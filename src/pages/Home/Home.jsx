@@ -1,3 +1,6 @@
+
+import React, {useRef} from 'react'
+
 import { useInView } from 'framer-motion';
 import React, { useState } from 'react';
 
@@ -15,9 +18,11 @@ import './Home.css';
 
 // Component con để áp dụng hiệu ứng xuất hiện khi scroll
 const AnimateOnScroll = ({ children, delay = 0 }) => {
-  const ref = React.useRef(null);
-  const isInView = useInView(ref, { once: false, amount: 0.3 });
-  
+
+  const ref = useRef(null);
+  //Hiệu ứng chỉ chạy 1 lần và khi scroll đc 30% phần tử sẽ có animation
+  const isInView = useInView(ref, { once: true, amount: 0.3 });
+
   return (
     <div
       ref={ref}
@@ -78,15 +83,15 @@ function Home() {
         </div>
       </AnimateOnScroll>
       
-      <AnimateOnScroll delay={0.2}>
+      <AnimateOnScroll delay={0.4}>
         <Card />
       </AnimateOnScroll>
       
-      <AnimateOnScroll delay={0.3}>
+      <AnimateOnScroll delay={0.6}>
         <CardGroup />
       </AnimateOnScroll>
       
-      <AnimateOnScroll delay={0.4}>
+      <AnimateOnScroll delay={0.8}>
         <div className='contact-container'>
           <h3>Khám phá thêm</h3>
           <div className='contact-img'>
