@@ -1,17 +1,16 @@
-import React, { useState, useEffect, use } from 'react'
+import React, { useEffect, useState } from 'react';
+import { Button } from 'react-bootstrap';
 import Card from 'react-bootstrap/Card';
-import card1 from '../../assets/card1.jpg';
-import card2 from '../../assets/card2.jpg';
-import card3 from '../../assets/card3.jpg';
-import card4 from '../../assets/card4.jpg';
-import card5 from '../../assets/card1.jpg';
-import card6 from '../../assets/card2.jpg';
-import card7 from '../../assets/card3.jpg';
-import card8 from '../../assets/card4.jpg';
+import { default as card1, default as card5 } from '../../assets/card1.jpg';
+import { default as card2, default as card6 } from '../../assets/card2.jpg';
+import { default as card3, default as card7 } from '../../assets/card3.jpg';
+import { default as card4, default as card8 } from '../../assets/card4.jpg';
+import { useCart } from '../../context/CartContext';
 
-import '../component/Card.css'
+import '../component/Card.css';
 
 function BasicExample() {
+    const { addToCart } = useCart();
     const cards = [
         {
             id: 1,
@@ -71,6 +70,11 @@ function BasicExample() {
         },
     ];
 
+    const handleAddToCart = (card) => {
+        addToCart(card);
+        alert('Đã thêm tour vào giỏ hàng!');
+    };
+
     const itemCard = 4;
     const [currentCard, setCurrentCard] = useState(0);
     const maxIndex = cards.length - itemCard;
@@ -102,6 +106,13 @@ function BasicExample() {
                                     <Card.Title className='title'>{card.title}</Card.Title>
                                     <Card.Text style={{ height: '60px', fontWeight: 'bold' }}>{card.text}</Card.Text>
                                     <div className='py-2 fw-semibold'>Chỉ từ: {card.price}</div>
+                                    <Button 
+                                        variant="primary" 
+                                        className="w-100 mt-2"
+                                        onClick={() => handleAddToCart(card)}
+                                    >
+                                        Đặt tour
+                                    </Button>
                                 </Card.Body>
                             </Card>
                         ))

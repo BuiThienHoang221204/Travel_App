@@ -1,19 +1,22 @@
-import React from 'react'
 import { useInView } from 'framer-motion';
+import React, { useState } from 'react';
 
+import { FaShoppingCart } from "react-icons/fa";
+import contactImg from '../../assets/contact-img.jpg';
 import content1 from '../../assets/content-img1.jpg';
 import content2 from '../../assets/content-img2.jpg';
 import content3 from '../../assets/content-img3.jpg';
 import content4 from '../../assets/content-img4.jpg';
-import contactImg from '../../assets/contact-img.jpg';
 import imgIphone from '../../assets/img-iphone.jpg';
-import './Home.css'
+import CartModal from '../../component/CartModal/CartModal';
+import { useCart } from '../../context/CartContext';
 import Card, { CardGroup, Scroll } from '../component';
+import './Home.css';
 
 // Component con để áp dụng hiệu ứng xuất hiện khi scroll
 const AnimateOnScroll = ({ children, delay = 0 }) => {
   const ref = React.useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.3 });
+  const isInView = useInView(ref, { once: false, amount: 0.3 });
   
   return (
     <div
@@ -31,6 +34,17 @@ const AnimateOnScroll = ({ children, delay = 0 }) => {
 };
 
 function Home() {
+  const [showCartModal, setShowCartModal] = useState(false);
+  const { cartItems } = useCart();
+
+  const handleCartClick = () => {
+    setShowCartModal(true);
+  };
+
+  const handleCloseCartModal = () => {
+    setShowCartModal(false);
+  };
+
   //Content 
   const contents = [
     { id: 1, img: content1, title: 'Vô vàng lựa chọn', text: 'Tìm kiếm niềm vui với gần nửa triệu điểm tham quan, phòng khách sạn và nhiều trải nghiệm thú vị' },
@@ -41,7 +55,12 @@ function Home() {
   return (
     <div>
       <Scroll />
-      
+      <div className="floating-cart-button" onClick={handleCartClick}>
+        <FaShoppingCart className="cart-icon" />
+        {cartItems.length > 0 && (
+          <span className="cart-badge">{cartItems.length}</span>
+        )}
+      </div>
       <AnimateOnScroll>
         <div className='content-container'>
           <h3>Vì sao bạn nên chọn Travel</h3>
@@ -85,6 +104,8 @@ function Home() {
           </div>
         </div>
       </AnimateOnScroll>
+
+      <CartModal show={showCartModal} handleClose={handleCloseCartModal} />
     </div>
   )
 }
